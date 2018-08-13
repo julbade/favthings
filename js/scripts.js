@@ -1,56 +1,33 @@
 $(document).ready(function() {
 $("#infos").submit(function(event)  {
-event.preventDefault()
-  var firstnameInput = $("input#firstname").val();
-  var lastnameInput = $("input#lastname").val();
-  var addressInput = $("input#address").val();
+    event.preventDefault()
+  // var faves = ["food", "car", "color", "shoes"];
+  var food = $("input#food").val();
+  var car = $("input#car").val();
+  var color = $("input#color").val();
+  var shoes = $("input#shoes").val();
+  var userInputs = [food, car, color, shoes]
+  var userArrays = [];
 
 
 
-    $(".firstname").text(firstnameInput);
-    $(".lastname").text(lastnameInput);
-    $(".address").text(addressInput);
-    $("#frontpage").hide();
-    $("#backpage").show();
-});
+    $("#food-output").text(userInputs[0]);
+    $("#car-output").text(userInputs[1]);
+    $("#color-output").text(userInputs[2]);
+    $("#shoes-output").text(userInputs[3]);
 
-$("#goback").click(function(event) {
-  event.preventDefault()
-  $("#frontpage").show();
-  $("#backpage").hide();
-  $("#lastpage").hide()
+    userArrays.push(userInputs[0]);
+    userArrays.push(userInputs[1]);
+    userArrays.push(userInputs[2]);
+    userArrays.push(userInputs[3]);
 
-
-});
-
-
-$("#next").click(function(event) {
-  event.preventDefault()
-
-  $("#frontpage").hide();
-  $("#backpage").hide();
-  $("#lastpage").show();
-
-});
+        $("#infos").append("<li>" + userArrays.pop() + "</li>");
+        $("#infos").append("<li>" + userArrays.pop() + "</li>");
+        $("#infos").append("<li>" + userArrays.pop() + "</li>");
+        $("#infos").append("<li>" + userArrays.pop() + "</li>");
 
 
-$("#submit").click(function(event) {
-    event.preventDefault();
-    var QuestionOne = $("input:radio[name=choice]:checked").val();
-    if (QuestionOne === "violet") {
-      alert("you can do C sharp!");
-    }
-    else if (QuestionOne === "blue") {
-      alert("you can do Java!");
-    }
-    else if (QuestionOne === "red") {
-      alert("you can do Ruby!");
-    }
-    else if (QuestionOne === "orange") {
-      alert("you can do PHP!");
-    }
-    else if (QuestionOne === "white") {
-      alert("Click the link below for an awesome school!");
-    }
-  });
+
+
+ });
 });
